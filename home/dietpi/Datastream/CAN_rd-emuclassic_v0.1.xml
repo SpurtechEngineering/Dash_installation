@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPURTECH ENGINEERING CAN DATA STREAM - ECUMASTER CLASSIC v2 - software v0.1 -->
+<!-- Features: CAN Switch board, EGT2CAN -->
+<RealDashCAN version="2">
+<frames>
+    <frame id="0x600" endianess="little"><!--EMU CAN Stream - ID 0-->
+      <value targetId="37" offset="0" length="2" rangeMin="0" rangeMax="15000"></value> <!-- RPM -->
+      <value targetId="42" offset="2" length="1" conversion="V/2"></value> <!-- TPS -->
+      <value targetId="27" offset="3" length="1"></value> <!-- IAT -->
+      <value targetId="31" offset="4" length="2" conversion="V" rangeMin="0" rangeMax="600"></value> <!--MAP-->
+      <value targetId="35" offset="6" length="2" conversion="V*0.016129"></value> <!--Injector PW-->
+    </frame>
+    
+    <frame id="0x601" endianess="little"><!--EMU CAN Stream - ID 1-->
+       <value name="EMU: Analog-1" offset="0" length="2" conversion="V*0.0048828" units="V"></value><!--Analog 1 (AC Pressur)-->
+       <value name="EMU: Analog-2" offset="2" length="2" conversion="V*0.0048828" units="V"></value><!--Analog 2 OIL Warning-->   
+       <value name="EMU: Analog-3" offset="4" length="2" conversion="V*0.0048828" units="V"></value><!--Analog 3 DBW-->
+       <value name="EMU: Analog-4" offset="6" length="2" conversion="V*0.0048828" units="V"></value> <!--Analog 4 MUX Switch-->
+    </frame>
+
+    <frame id="0x602" endianess="little"><!--EMU CAN Stream - ID 2-->
+      <value targetId="14" offset="6" length="2"></value> <!-- Coolant -->
+      <value targetId="152" offset="3" length="1" conversion="V" rangeMin="0" rangeMax="160"></value> <!--OIL Temp-->
+      <value targetId="151" offset="4" length="1" conversion="V*0.0625" rangeMin="0" rangeMax="12"></value> <!--OIL Pressure-->
+    </frame>
+
+    <frame id="0x603" endianess="little"><!--EMU CAN Stream - ID 3-->
+      <value targetId="254" offset="2" length="1" conversion="V*0.0078125" ></value> <!-- Lambda 1 -->
+      <value targetId="0" offset="2" length="1" conversion="V*14.7*0.0078125"></value> <!-- AFR -->
+      <value targetId="38" offset="0" length="1"  signed="true" ></value> <!-- Ignition Angle -->
+      <value targetId="23" offset="1" length="1" conversion="V*0.05"></value> <!-- Ignition Dwell -->
+    </frame>
+
+    <frame id="0x604" endianess="little"><!--EMU CAN Stream - ID 4-->
+      <value targetId="200" offset="0" length="1" conversion="V"></value> <!-- Gear -->
+      <value name="EMU: ECU temp" offset="1" length="1" conversion="V"></value> <!-- ECU temp -->
+      <value targetId="12" offset="2" length="2"  conversion="V*0.027"></value> <!-- Battery Voltage -->
+      <!--Error flags-->
+      <value name="EMU: Check engine light" offset="4" length="2" units="V"></value><!--Check engine light-->
+      <value name="EMU: CLT Sensor Error" offset="4" length="2" units="bit"></value> <!--CEL Coolant temperature sensor failed -->
+      <value name="EMU: IAT Sensor Error" offset="4" length="2" units="bit" startbit="1" bitCount="1"></value>   <!--CEL IAT sensor failed  -->
+      <value name="EMU: WBO Sensor failed" offset="4" length="2" units="bit" startbit="3" bitCount="1"></value>  <!--CEL Wide band oxygen sensor failed  -->
+      <value name="EMU: EGT1 Sensor failed" offset="4" length="2" units="bit" startbit="4" bitCount="1"></value> <!--CEL EGT sensor #1 failed  -->
+      <value name="EMU: EGT2 Sensor failed" offset="4" length="2" units="bit" startbit="5" bitCount="1"></value> <!--CEL EGT sensor #2 failed  -->
+      <value name="EMU: EGT too high" offset="4" length="2" units="bit" startbit="6" bitCount="1"></value>       <!--CEL EGT too high  -->
+      <value name="EMU: Knocking detected" offset="4" length="2" units="bit" startbit="7" bitCount="1"></value>  <!--CEL Knocking detected -->
+      <value name="EMU: Flex Fuel Sensor failed" offset="4" length="2" units="bit" startbit="8" bitCount="1"></value> <!--CEL Flex Fuel sensor failed  -->
+      <value name="EMU: Drive by wire failure" offset="4" length="2" units="bit" startbit="9" bitCount="1"></value>   <!--CEL Drive by wire failure  -->
+      <!--Flags-->
+      <value name="EMU: Gearcut acive" offset="6" length="1" units="bit" startbit="0" bitCount="1"></value>
+      <value name="EMU: ALS active" offset="6" length="1" units="bit" startbit="1" bitCount="1"></value>
+      <value name="EMU: LC active" offset="6" length="1" units="bit" startbit="2" bitCount="1"></value>
+      <value name="EMU: Idle active" offset="6" length="1" units="bit" startbit="3" bitCount="1"></value>
+    </frame>
+
+    <frame id="0x605" endianess="little"><!--EMU CAN Stream - ID 5-->
+       <value name="EMU: DBW Position" offset="0" length="1" conversion="V*0.5" units="V"></value><!--DWB Position %-->
+       <value name="EMU: DBW Target" offset="1" length="1" conversion="V*0.5" units="V"></value><!--DBW traget %-->
+       <value name="EMU: TC DRPM RAW" offset="2" length="2" units="V"></value><!--EMU: TC DRPM RAW-->
+       <value name="EMU: TC DRPM" offset="4" length="2" conversion="V" units="V"></value><!--EMU: TC DRPM-->
+       <value name="EMU: TC TORQUE REDUCTION" offset="6" length="1" conversion="V" units="V"></value><!--EMU: TC TORQUE REDUCTION-->
+       <value name="EMU: PIT LIMIT. TORQUE REDUCTION" offset="7" length="1" conversion="V" units="V"></value><!-- EMU: PIT LIMIT. TORQUE REDUCTION -->
+    </frame>
+
+    <frame id="0x606" endianess="little"><!--EMU CAN Stream - ID 6-->
+       <!-- Outflags 1-->
+       <value name="EMU: PO#1 state" offset="4" length="1" units="bit" startbit="0" bitCount="1"></value>         <!--Parametric output #1 state -->
+       <value name="EMU: PO#2 state" offset="4" length="1" units="bit" startbit="1" bitCount="1"></value>         <!--Parametric output #2 state -->
+       <value name="EMU: PO#3 state" offset="4" length="1" units="bit" startbit="2" bitCount="1"></value>         <!--Parametric output #3 state -->
+       <value name="EMU: VPO#1 state" offset="4" length="1" units="bit" startbit="5" bitCount="1"></value>        <!--Virtual output #1 state -->
+       <value name="EMU: VPO#2 state" offset="4" length="1" units="bit" startbit="6" bitCount="1"></value>        <!--Virtual output #2 state -->
+       <!-- Outflags 2-->
+       <value name="EMU: CANSW1" offset="5" length="1" units="bit" startbit="0" bitCount="1"></value>         <!--CAN switch #1 state -->
+       <value name="EMU: CANSW2" offset="5" length="1" units="bit" startbit="1" bitCount="1"></value>         <!--CAN switch #2 state -->
+       <value name="EMU: CANSW3" offset="5" length="1" units="bit" startbit="2" bitCount="1"></value>         <!--CAN switch #3 state -->
+       <value name="EMU: CANSW4" offset="5" length="1" units="bit" startbit="3" bitCount="1"></value>         <!--CAN switch #4 state -->
+       <value name="EMU: CANSW5" offset="5" length="1" units="bit" startbit="4" bitCount="1"></value>         <!--CAN switch #5 state -->
+       <value name="EMU: CANSW6" offset="5" length="1" units="bit" startbit="5" bitCount="1"></value>         <!--CAN switch #6 state -->
+       <value name="EMU: CANSW7" offset="5" length="1" units="bit" startbit="6" bitCount="1"></value>         <!--CAN switch #7 state -->
+       <value name="EMU: CANSW8" offset="5" length="1" units="bit" startbit="7" bitCount="1"></value>         <!--CAN switch #8 state -->
+       <!-- Outflags 3-->
+       <value name="EMU: SW1" offset="6" length="1" unit="bit" startbit="0" bitCount="1"></value>         <!--sw1-->
+       <value name="EMU: SW2" offset="6" length="1" unit="bit" startbit="1" bitCount="1"></value>         <!--sw2-->
+       <value name="EMU: SW3" offset="6" length="1" unit="bit" startbit="2" bitCount="1"></value>         <!--sw3-->
+
+ 
+    </frame>
+    <frame id="0x640" endianess="big"><!--EMU CAN Switch Board V3 - ID 0 -->
+        <value name="CAN Switch: Analog #1" offset="0" length="2" units="V"></value>
+        <value name="CAN Switch: Analog #2" offset="2" length="2" units="V"></value>
+        <value name="CAN Switch: Analog #3" offset="4" length="2" units="V"></value>
+        <value name="CAN Switch: Analog #4" offset="6" length="2" units="V"></value>
+      </frame>
+
+    <frame id="0x641" endianess="big"><!--EMU CAN Switch Board V3 - ID 1 -->
+        <value name="CAN Switch: Analog #5" offset="0" length="2" units="V"></value>
+        <value name="CAN Switch: Analog #6" offset="2" length="2" units="V"></value>
+        <value name="CAN Switch: Analog #7" offset="4" length="2" units="V"></value>
+        <value name="CAN Switch: Analog #8" offset="6" length="2" units="V"></value>
+    </frame>
+
+    <frame id="0x641" endianess="little"><!--EMU CAN Switch Board V3 - ID 2 -->
+        <value name="CAN Switch: Rotary 1" offset="0" length="1" units="bit" startbit="0" bitCount="1"></value>
+        <value name="CAN Switch: Rotary 2" offset="0" length="1" units="bit" startbit="4" bitCount="1"></value>
+        <value name="CAN Switch: Rotary 3" offset="1" length="1" units="bit" startbit="0" bitCount="1"></value>
+        <value name="CAN Switch: Rotary 4" offset="1" length="1" units="bit" startbit="4" bitCount="1"></value>
+        <value name="CAN Switch: Rotary 5" offset="2" length="1" units="bit" startbit="0" bitCount="1"></value>
+        <value name="CAN Switch: Rotary 6" offset="2" length="1" units="bit" startbit="4" bitCount="1"></value>
+        <value name="CAN Switch: Rotary 7" offset="3" length="1" units="bit" startbit="0" bitCount="1"></value>
+        <value name="CAN Switch: Rotary 8" offset="3" length="1" units="bit" startbit="4" bitCount="1"></value>
+
+        <value name="CAN Switch: Switch 1" offset="4" length="1" units="bit" startbit="0" bitCount="1"></value>
+        <value name="CAN Switch: Switch 2" offset="4" length="1" units="bit" startbit="1" bitCount="1"></value>
+        <value name="CAN Switch: Switch 3" offset="4" length="1" units="bit" startbit="2" bitCount="1"></value>
+        <value name="CAN Switch: Switch 4" offset="4" length="1" units="bit" startbit="3" bitCount="1"></value>
+        <value name="CAN Switch: Switch 5" offset="4" length="1" units="bit" startbit="4" bitCount="1"></value>
+        <value name="CAN Switch: Switch 6" offset="4" length="1" units="bit" startbit="5" bitCount="1"></value>
+        <value name="CAN Switch: Switch 7" offset="4" length="1" units="bit" startbit="6" bitCount="1"></value>
+        <value name="CAN Switch: Switch 8" offset="4" length="1" units="bit" startbit="7" bitCount="1"></value>
+
+        <value name="CAN Switch: Analog Mask 1" offset="5" length="1" units="bit" startbit="0" bitCount="1"></value>
+        <value name="CAN Switch: Analog Mask 2" offset="5" length="1" units="bit" startbit="1" bitCount="1"></value>
+        <value name="CAN Switch: Analog Mask 3" offset="5" length="1" units="bit" startbit="2" bitCount="1"></value>
+        <value name="CAN Switch: Analog Mask 4" offset="5" length="1" units="bit" startbit="3" bitCount="1"></value>
+        <value name="CAN Switch: Analog Mask 5" offset="5" length="1" units="bit" startbit="4" bitCount="1"></value>
+        <value name="CAN Switch: Analog Mask 6" offset="5" length="1" units="bit" startbit="5" bitCount="1"></value>
+        <value name="CAN Switch: Analog Mask 7" offset="5" length="1" units="bit" startbit="6" bitCount="1"></value>
+        <value name="CAN Switch: Analog Mask 8" offset="5" length="1" units="bit" startbit="7" bitCount="1"></value>
+
+        <value name="CAN Switch: Low side 1" offset="6" length="1" units="bit" startbit="0" bitCount="1"></value>
+        <value name="CAN Switch: Low side 2" offset="6" length="1" units="bit" startbit="1" bitCount="1"></value>
+        <value name="CAN Switch: Low side 3" offset="6" length="1" units="bit" startbit="2" bitCount="1"></value>
+        <value name="CAN Switch: Low side 4" offset="6" length="1" units="bit" startbit="3" bitCount="1"></value>
+        <value name="CAN Switch: Low side 5" offset="6" length="1" units="bit" startbit="4" bitCount="1"></value>
+        <value name="CAN Switch: Low side 6" offset="6" length="1" units="bit" startbit="5" bitCount="1"></value>
+        <value name="CAN Switch: Low side 7" offset="6" length="1" units="bit" startbit="6" bitCount="1"></value>
+        <value name="CAN Switch: Low side 8" offset="6" length="1" units="bit" startbit="7" bitCount="1"></value>
+    
+       <value name="EMU Black: Heartbeat" offset="7" length="1"></value>
+    </frame>
+   
+    <frame id="0x610" endianess="big"><!--EMU EGT2CAN - ID 0 -->
+       <value name="EMU EGT2CAN: 1" offset="0" length="2" units="V"></value>
+       <value name="EMU EGT2CAN: 2" offset="2" length="2" units="V"></value>
+       <value name="EMU EGT2CAN: 3" offset="4" length="2" units="V"></value>
+       <value name="EMU EGT2CAN: 4" offset="6" length="2" units="V"></value>
+    </frame>
+
+    <frame id="0x611" endianess="big"><!--EMU EGT2CAN - ID 1 -->
+       <value name="EMU EGT2CAN: 5" offset="0" length="2" units="V"></value>
+       <value name="EMU EGT2CAN: 6" offset="2" length="2" units="V"></value>
+       <value name="EMU EGT2CAN: 7" offset="4" length="2" units="V"></value>
+       <value name="EMU EGT2CAN: 8" offset="6" length="2" units="V"></value>
+    </frame>
+    
+</frames>
+</RealDashCAN>
