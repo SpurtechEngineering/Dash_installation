@@ -1,9 +1,0 @@
-@lxpanel --profile LXDE
-@pcmanfm --desktop --profile LXDE
-@xscreensaver -no-splash
-
-
-@realdash
-@/home/hide_cursor/hide_cursor.sh
-@/home/can_bus/can_setup.sh
-@/home/led_controller/led_controller.cpp
